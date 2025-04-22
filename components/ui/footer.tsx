@@ -65,7 +65,7 @@ export default function Footer() {
                   <li>
                     <a
                       className="text-indigo-200/65 transition-all duration-300 hover:text-indigo-500 hover:translate-x-1"
-                      href="#modal-video" // Targeting modal-video section
+                      href="#modal-video"
                     >
                       Demo
                     </a>
@@ -73,7 +73,7 @@ export default function Footer() {
                   <li>
                     <a
                       className="text-indigo-200/65 transition-all duration-300 hover:text-indigo-500 hover:translate-x-1"
-                      href="#workflows" // Targeting workflows section
+                      href="#workflows"
                     >
                       Process
                     </a>
@@ -81,7 +81,7 @@ export default function Footer() {
                   <li>
                     <a
                       className="text-indigo-200/65 transition-all duration-300 hover:text-indigo-500 hover:translate-x-1"
-                      href="#features" // Targeting features section
+                      href="#features"
                     >
                       Features
                     </a>
