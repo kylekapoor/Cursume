@@ -5,7 +5,7 @@ export const metadata = {
 
 import PageIllustration from "@/components/page-illustration";
 import Hero from "@/components/hero-home";
-import Workflows from "@/components/workflows";
+import Process from "@/components/process";
 import Features from "@/components/features";
 import Cta from "@/components/cta";
 
@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <PageIllustration />
       <Hero />
-      <Workflows />
+      <Process />
       <Features />
       <Cta />
     </>

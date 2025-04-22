@@ -1,6 +1,6 @@
 import { SignInButton } from "@clerk/nextjs";
 import VideoThumb from "@/public/images/hero-image-01.jpg";
-import ModalVideo from "@/components/modal-video";
+import ModalVideo from "@/components/demo";
 
 export default function HeroHome() {
   return (
@@ -68,7 +68,7 @@ export default function HeroHome() {
 
           {/* Video section */}
           <div
-            id="modal-video"
+            id="Demo"
             className="transition-opacity duration-700 ease-in-out scroll-mt-24"
             data-aos="fade-up"
             data-aos-delay={600}

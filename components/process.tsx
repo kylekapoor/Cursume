@@ -4,9 +4,9 @@ import WorflowImg02 from "@/public/images/workflow-02.png";
 import WorflowImg03 from "@/public/images/workflow-03.png";
 import Spotlight from "@/components/spotlight";
 
-export default function Workflows() {
+export default function Process() {
   return (
-    <section id="workflows" className="...">
+    <section id="Process" className="...">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pb-12 md:pb-20">
           {/* Section header */}
