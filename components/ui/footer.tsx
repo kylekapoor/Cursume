@@ -1,18 +1,22 @@
 import Logo from "./logo";
 import { FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Footer() {
+  // Helper function to create homepage links with section IDs
+  const createHomeLink = (section: string) => {
+    return `/#${section}`;
+  };
+
   return (
     <>
       <footer>
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-          {/* Footer illustration */}
+          {/* Footer background decoration */}
           <div
             className="pointer-events-none absolute bottom-0 left-1/2 -z-10 -translate-x-1/2"
             aria-hidden="true"
-          >
-            {/* Optional decorative background */}
-          </div>
+          />
 
           {/* Footer content */}
           <div
@@ -33,18 +37,18 @@ export default function Footer() {
                 <ul className="inline-flex gap-3 mt-4">
                   <li>
                     <a
-                      className="flex items-center justify-center text-indigo-500 transition-all duration-300 hover:text-indigo-400 hover:scale-110"
                       href="https://www.linkedin.com/in/cursume/"
                       aria-label="LinkedIn"
+                      className="flex items-center justify-center text-indigo-500 transition-all duration-300 hover:text-indigo-400 hover:scale-110"
                     >
                       <FaLinkedinIn className="h-5 w-5" />
                     </a>
                   </li>
                   <li>
                     <a
-                      className="flex items-center justify-center text-indigo-500 transition-all duration-300 hover:text-indigo-400 hover:scale-110"
                       href="mailto:support@cursume.com"
                       aria-label="Email"
+                      className="flex items-center justify-center text-indigo-500 transition-all duration-300 hover:text-indigo-400 hover:scale-110"
                     >
                       <FaEnvelope className="h-5 w-5" />
                     </a>
@@ -59,62 +63,64 @@ export default function Footer() {
               data-aos="fade-up"
               data-aos-delay="300"
             >
+              {/* Tool links */}
               <div className="space-y-2">
                 <h3 className="text-sm font-medium text-gray-200">Tool</h3>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <a
+                    <Link
+                      href={createHomeLink("Demo")}
                       className="text-indigo-200/65 transition-all duration-300 hover:text-indigo-500 hover:translate-x-1"
-                      href="#Demo"
                     >
                       Demo
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
+                      href={createHomeLink("Process")}
                       className="text-indigo-200/65 transition-all duration-300 hover:text-indigo-500 hover:translate-x-1"
-                      href="#Process"
                     >
                       Process
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
+                      href={createHomeLink("Features")}
                       className="text-indigo-200/65 transition-all duration-300 hover:text-indigo-500 hover:translate-x-1"
-                      href="#Features"
                     >
                       Features
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
 
+              {/* Resources links */}
               <div className="space-y-2">
                 <h3 className="text-sm font-medium text-gray-200">Resources</h3>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <a
+                    <Link
+                      href="/contact"
                       className="text-indigo-200/65 transition-all duration-300 hover:text-indigo-500 hover:translate-x-1"
-                      href="#0"
                     >
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
+                      href="/terms"
                       className="text-indigo-200/65 transition-all duration-300 hover:text-indigo-500 hover:translate-x-1"
-                      href="#0"
                     >
                       Terms of Service
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
+                      href="/privacy"
                       className="text-indigo-200/65 transition-all duration-300 hover:text-indigo-500 hover:translate-x-1"
-                      href="#0"
                     >
                       Privacy Policy
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -123,7 +129,7 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Bottom line */}
+      {/* Footer bottom bar */}
       <div className="text-center py-4 text-sm text-indigo-200/65">
         © Cursume 2025. All Rights Reserved.
       </div>
