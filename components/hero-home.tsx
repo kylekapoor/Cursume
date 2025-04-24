@@ -1,14 +1,27 @@
-import { SignInButton, UserButton } from "@clerk/nextjs";
+"use client";
+
+import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
 import VideoThumb from "@/public/images/hero-image-01.jpg";
 import ModalVideo from "@/components/demo";
+import { useEffect, useState } from "react";
 
 export default function HeroHome() {
+  const { isLoaded, isSignedIn } = useAuth();
+  const [mounted, setMounted] = useState(false);
+
+  // Only show the UI after first hydration to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section id="Home" className="relative">
-      {/* Top-right user profile button */}
-      <div className="absolute top-4 right-4 z-50">
-        <UserButton afterSignOutUrl="/" />
-      </div>
+      {/* Top-right user profile button - only render when auth is loaded and component is mounted */}
+      {mounted && isLoaded && (
+        <div className="absolute top-4 right-4 z-50">
+          <UserButton afterSignOutUrl="/" />
+        </div>
+      )}
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="py-12 md:py-20">
@@ -35,7 +48,7 @@ export default function HeroHome() {
                 data-aos-delay={200}
               >
                 Update your resume with a single prompt and watch it come to life in real time. <br />
-                Whether it’s your first internship or your next big move, we’ve got you covered.
+                Whether it's your first internship or your next big move, we've got you covered.
               </p>
 
               <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
