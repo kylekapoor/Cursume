@@ -65,7 +65,7 @@ export default function Terms() {
   <div>
   <h2 className="text-white font-semibold text-xl mb-2">3. Privacy</h2>
   <p className="mb-6">
-    Our <a href="/privacy-policy" className="underline hover:text-indigo-300 transition-colors duration-200 ease-in-out">Privacy Policy</a> explains how we collect, use, and protect your personal data. By using our platform, you consent to our data practices.
+    Our <a href="/privacy" className="underline hover:text-indigo-300 transition-colors duration-200 ease-in-out">Privacy Policy</a> explains how we collect, use, and protect your personal data. By using our platform, you consent to our data practices.
   </p>
 </div>
 
