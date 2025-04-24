@@ -1,10 +1,15 @@
-import { SignInButton } from "@clerk/nextjs";
+import { SignInButton, UserButton } from "@clerk/nextjs";
 import VideoThumb from "@/public/images/hero-image-01.jpg";
 import ModalVideo from "@/components/demo";
 
 export default function HeroHome() {
   return (
-    <section id="Home" className="...">
+    <section id="Home" className="relative">
+      {/* Top-right user profile button */}
+      <div className="absolute top-4 right-4 z-50">
+        <UserButton afterSignOutUrl="/" />
+      </div>
+
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="py-12 md:py-20">
           <div className="pb-12 text-center md:pb-20">
@@ -35,9 +40,9 @@ export default function HeroHome() {
 
               <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
                 <div data-aos="fade-up" data-aos-delay={400}>
-                  <SignInButton mode="redirect">
+                  <SignInButton mode="redirect" forceRedirectUrl="/tools">
                     <a
-                      href="/tools"
+                      href="#"
                       role="button"
                       className="group block w-full sm:w-auto cursor-pointer mb-4 px-6 py-3 rounded-lg text-white font-semibold 
                                  bg-gradient-to-b from-indigo-600 to-indigo-500 
