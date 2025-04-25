@@ -4,15 +4,24 @@ import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
 import VideoThumb from "@/public/images/hero-image-01.jpg";
 import ModalVideo from "@/components/demo";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function HeroHome() {
   const { isLoaded, isSignedIn } = useAuth();
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   // Only show the UI after first hydration to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Handle redirect after successful sign-in
+  useEffect(() => {
+    if (mounted && isLoaded && isSignedIn) {
+      router.push("/tools");
+    }
+  }, [mounted, isLoaded, isSignedIn, router]);
 
   return (
     <section id="Home" className="relative">
@@ -53,10 +62,8 @@ export default function HeroHome() {
 
               <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
                 <div data-aos="fade-up" data-aos-delay={400}>
-                  <SignInButton mode="redirect" forceRedirectUrl="/tools">
-                    <a
-                      href="#"
-                      role="button"
+                  <SignInButton mode="modal">
+                    <button
                       className="group block w-full sm:w-auto cursor-pointer mb-4 px-6 py-3 rounded-lg text-white font-semibold 
                                  bg-gradient-to-b from-indigo-600 to-indigo-500 
                                  hover:from-indigo-500 hover:to-indigo-400 
@@ -70,7 +77,7 @@ export default function HeroHome() {
                           -&gt;
                         </span>
                       </span>
-                    </a>
+                    </button>
                   </SignInButton>
                 </div>
               </div>
