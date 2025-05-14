@@ -5,26 +5,71 @@ import { useState } from "react";
 interface Props {
   docSource: string;
   setDocSource: (val: string) => void;
+  selectedText: string | null;
+  setSelectedText: (val: string | null) => void;
 }
 
-export default function AIPromptPanel({ docSource, setDocSource }: Props) {
+export default function AIPromptPanel({ docSource, setDocSource, selectedText, setSelectedText }: Props) {
   const [input, setInput] = useState("");
+  const [suggestion, setSuggestion] = useState<string | null>(null);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
-    const newContent = docSource + `\n\n% AI Suggestion: ${input}`;
-    setDocSource(newContent);
-    setInput("");
+
+    // TODO: Call GPT here
+    const fakeSuggestion = selectedText
+      ? `Improved version of: ${selectedText}`
+      : `Added note: ${input}`;
+
+    setSuggestion(fakeSuggestion);
+  };
+
+  const handleAccept = () => {
+    if (selectedText && suggestion) {
+      const updated = docSource.replace(selectedText, suggestion);
+      setDocSource(updated);
+      setSuggestion(null);
+      setSelectedText(null);
+    }
+  };
+
+  const handleReject = () => {
+    setSuggestion(null);
+    setSelectedText(null);
   };
 
   return (
     <div className="flex flex-col h-full">
       <div className="flex-1 overflow-y-auto p-6 text-gray-700 text-sm space-y-4">
-        <p>💬 <strong>AI:</strong> Let's improve your resume...</p>
-        <ul className="list-disc list-inside ml-4 text-gray-600">
-          <li>Optimize wording for technical skills</li>
-          <li>Adjust section titles</li>
-        </ul>
+        {selectedText ? (
+          <div className="bg-yellow-50 p-4 rounded border border-yellow-200">
+            <p className="font-semibold">Selected Text:</p>
+            <p className="italic">{selectedText}</p>
+          </div>
+        ) : (
+          <p className="text-gray-500 italic">Select a portion of the resume to edit or add a general prompt.</p>
+        )}
+
+        {suggestion && (
+          <div className="bg-green-50 p-4 rounded border border-green-200">
+            <p className="font-semibold mb-2">💡 GPT Suggestion:</p>
+            <p>{suggestion}</p>
+            <div className="mt-2 flex space-x-3">
+              <button
+                onClick={handleAccept}
+                className="bg-green-600 text-white text-sm px-3 py-1 rounded hover:bg-green-700"
+              >
+                ✓ Accept
+              </button>
+              <button
+                onClick={handleReject}
+                className="bg-gray-300 text-sm px-3 py-1 rounded hover:bg-gray-400"
+              >
+                ✕ Decline
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="border-t border-gray-200 px-4 py-3 flex items-center bg-white">

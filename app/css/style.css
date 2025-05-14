@@ -74,6 +74,21 @@
   }
 }
 
+.docx-wrapper {
+  font-family: 'Calibri', sans-serif;
+  color: black;
+}
+
+.docx-wrapper img {
+  max-width: 100%;
+  height: auto;
+}
+
+.docx-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
 @layer base {
   *,
   ::after,
