@@ -1,7 +1,7 @@
 import Image from "next/image";
 import BlurredShape from "@/public/images/blurred-shape.svg";
 
-export default function Cta() {
+export default function Cta() {s
   return (
     <section className="relative overflow-hidden">
       <div
