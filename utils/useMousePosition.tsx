@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 interface MousePosition {
-  x: number;x
+  x: number;
   y: number;
 }
 
