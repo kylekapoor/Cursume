@@ -1,7 +1,7 @@
 // app/layout.tsx
 import "./css/style.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { type Metadata } from "next";
+import { type Metadata } from "next";s
 import Spotlight from "@/utils/spotlight";
 
 // Google Fonts
